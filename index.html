@@ -28,6 +28,8 @@ function send()
     
 function createTable(restaurantData) {
   var table = document.createElement('table');
+  table.setAttribute('border','1');
+  table.setAttribute('width','100%')
   addTableHeaders(table, ['name','status']);
   var tableBody = document.createElement('tbody');
 
