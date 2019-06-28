@@ -50,10 +50,12 @@ function createTable(restaurantData) {
     
 function addTableHeaders(table, headerNames){
     var header = table.createTHead();
+    var int y = 0;
     headerNames.forEach(function(headerName) {  
-        var row = header.insertRow(0);     
-        var cell = row.insertCell(0);
-        cell.innerHTML = '<b>' + headerName + '</b>';     
+        var row = header.insertRow(y);     
+        var cell = row.insertCell(y);
+        cell.innerHTML = '<b>' + headerName + '</b>';   
+        y++;
     });
 }
     
