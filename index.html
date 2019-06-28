@@ -17,14 +17,44 @@ function send()
         var restaurantsJSON = JSON.parse(matcher[1]).search.restaurants;
                 
         var randomIndex = Math.floor(Math.random() * restaurantsJSON.length);
-
-        document.getElementById("div").innerHTML = restaurantsJSON[randomIndex].name;
+        var selectedRestaurantJSON = restaurantsJSON[randomIndex];
+        createTable(selectedRestaurantJSON);
+      ///  document.getElementById("div").innerHTML = selectedRestaurantJSON.name;
     })
     .catch(function(err) {
     alert(err);
     });
  }
+    
+function createTable(restaurantData) {
+  var table = document.createElement('table');
+  addTableHeaders(table, ['name','status']);
+  var tableBody = document.createElement('tbody');
 
+  var row = document.createElement('tr');
+  ///x2
+  var cell = document.createElement('td');
+  cell.appendChild(document.createTextNode(restaurantData.name));
+  row.appendChild(cell);
+    
+  var cell = document.createElement('td');
+  cell.appendChild(document.createTextNode(restaurantData.status));
+  row.appendChild(cell);
+
+  tableBody.appendChild(row);
+  table.appendChild(tableBody);
+  document.getElementById("div").innerHTML = table;
+}
+    
+function addTableHeaders(table, headerNames){    
+    headerNames.forEach(function(headerName) {
+        var header = table.createTHead();
+        var row = header.insertRow(0);     
+        var cell = row.insertCell(0);
+        cell.innerHTML = headerName;     
+    });
+}
+    
 </script>
 
 
