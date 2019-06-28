@@ -2,19 +2,15 @@
 
 function send()
 {
-    URL = "https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5";  //Your URL
 
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
-    xmlhttp.open("GET", URL, false);
-    alert(xmlhttp.responseText);
-    document.getElementById("div").innerHTML = xmlhttp.statusText + ":" + xmlhttp.status + "<BR><textarea rows='100' cols='100'>" + xmlhttp.responseText + "</textarea>";
-}
+    const userAction = async () => {
+    const response = await fetch('https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5');
+       alert(response);
+       document.getElementById("div").innerHTML = response;
 
-function callbackFunction(xmlhttp) 
-{
-    alert(xmlhttp.responseXML);
-}
+    }
+ }
+
 </script>
 
 
