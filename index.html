@@ -50,9 +50,9 @@ function createTable(restaurantData) {
     
 function addTableHeaders(table, headerNames){
     var header = table.createTHead();
+    var row = header.insertRow(0);  
     var y = 0;
-    headerNames.forEach(function(headerName) {  
-        var row = header.insertRow(y);     
+    headerNames.forEach(function(headerName) {
         var cell = row.insertCell(y);
         cell.innerHTML = '<b>' + headerName + '</b>';   
         y++;
