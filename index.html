@@ -12,7 +12,7 @@ function send()
     fetch(request) // Call the fetch function passing the url of the API as a parameter
     .then(res => res.text())  // Promise with resolved method
     .then(function(data) {
-        var myRegexp = window\.__INITIAL_STATE__ = (.*?);/g;
+        var myRegexp = new RegExp('window\.__INITIAL_STATE__ = (.*?);');
         var jsonResponse = myRegexp.exec(data).match[0];
         alert(jsonResponse);
         document.getElementById("div").innerHTML = jsonResponse;
