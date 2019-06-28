@@ -4,12 +4,14 @@ function send()
 {
 
     alert("calling url");
-    const userAction = async () => {
-    const response = await fetch('https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5');
-       alert(response);
-       document.getElementById("div").innerHTML = response;
-
-    }
+    fetch('https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5') // Call the fetch function passing the url of the API as a parameter
+    .then(function(data) {
+    alert(data.text);
+    document.getElementById("div").innerHTML = data.text;
+    })
+    .catch(function(err) {
+    alert(err);
+    });
  }
 
 </script>
