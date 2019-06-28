@@ -16,7 +16,7 @@ function send()
         var matcher = myRegexp.exec(data);
         alert(matcher);
         var match = matcher.match[1];
-        alert(jsonResponse);
+        alert(match);
         document.getElementById("div").innerHTML = jsonResponse;
     })
     .catch(function(err) {
