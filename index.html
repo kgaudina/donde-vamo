@@ -13,7 +13,9 @@ function send()
     .then(res => res.text())  // Promise with resolved method
     .then(function(data) {
         var myRegexp = new RegExp('window\.__INITIAL_STATE__ = (.*?);');
-        var jsonResponse = myRegexp.exec(data).match[0];
+        var matcher = myRegexp.exec(data);
+        alert(matcher);
+        var match = matcher.match[0];
         alert(jsonResponse);
         document.getElementById("div").innerHTML = jsonResponse;
     })
