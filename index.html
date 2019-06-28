@@ -39,8 +39,12 @@ function createTable(restaurantData) {
   cell.appendChild(document.createTextNode(restaurantData.name));
   row.appendChild(cell);
     
+  var link = document.createElement("a");
+  link.setAttribute("href", restaurantData.url);
+  var linkText = document.createTextNode(restaurantData.url);
+  link.appendChild(linkText);
   var cell = document.createElement('td');
-  cell.appendChild(document.createTextNode(restaurantData.url));
+  cell.appendChild(link);
   row.appendChild(cell);
 
   tableBody.appendChild(row);
