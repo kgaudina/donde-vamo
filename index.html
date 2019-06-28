@@ -15,7 +15,7 @@ function send()
         var myRegexp = new RegExp('window\.__INITIAL_STATE__ = (.*?);');
         var matcher = myRegexp.exec(data);
         alert(matcher);
-        var match = matcher.match[0];
+        var match = matcher.match[1];
         alert(jsonResponse);
         document.getElementById("div").innerHTML = jsonResponse;
     })
