@@ -9,14 +9,16 @@ function send()
       method: 'GET', 
       headers: { }
     });
-    fetch(request) // Call the fetch function passing the url of the API as a parameter
-    .then(res => res.text())  // Promise with resolved method
+    fetch(request)
+    .then(res => res.text())  
     .then(function(data) {
         var myRegexp = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
         var matcher = myRegexp.exec(data);
-        alert(matcher);
-        alert(matcher[1]);
-        document.getElementById("div").innerHTML = JSON.parse(matcher[1]).search.restaurants;
+        var restaurantsJSON = JSON.parse(matcher[1]).search.restaurants;
+                
+        var randomIndex = Math.floor(Math.random() * restaurantsJSON.length);
+
+        document.getElementById("div").innerHTML = restaurantsJSON[randomIndex].name;
     })
     .catch(function(err) {
     alert(err);
