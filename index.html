@@ -3,8 +3,15 @@
 function send()
 {
 
-    alert("calling url");
-    fetch('https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5') // Call the fetch function passing the url of the API as a parameter
+    var url = 'https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5';
+    var request = new Request(url, {
+      method: 'GET', 
+      headers: {
+        'Access-Control-Allow-Origin':'*'',
+      }
+    });
+    alert("calling url v2");
+    fetch(request) // Call the fetch function passing the url of the API as a parameter
     .then(function(data) {
     alert(data.text);
     document.getElementById("div").innerHTML = data.text;
