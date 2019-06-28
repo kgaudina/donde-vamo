@@ -15,9 +15,8 @@ function send()
         var myRegexp = new RegExp('window\.__INITIAL_STATE__ = (.*?);');
         var matcher = myRegexp.exec(data);
         alert(matcher);
-        var match = matcher.match[1];
-        alert(match);
-        document.getElementById("div").innerHTML = match;
+        alert(matcher[1]);
+        document.getElementById("div").innerHTML = matcher[1];
     })
     .catch(function(err) {
     alert(err);
