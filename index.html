@@ -16,7 +16,7 @@ function send()
         var matcher = myRegexp.exec(data);
         alert(matcher);
         alert(matcher[1]);
-        document.getElementById("div").innerHTML = JSON.parse(matcher[1]);
+        document.getElementById("div").innerHTML = JSON.parse(matcher[1]).search.restaurants;
     })
     .catch(function(err) {
     alert(err);
