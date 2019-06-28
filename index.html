@@ -2,7 +2,7 @@
 
 function send()
 {
-    alert("calling url v9");
+    ///alert("calling url v9");
     var corsProxy = 'https://cors-anywhere.herokuapp.com/'
     var url = 'https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5';
     var request = new Request(corsProxy + url, {
@@ -68,7 +68,7 @@ function addTableHeaders(table, headerNames){
 
 <html>
 <body id='bod'><button type="submit" onclick="javascript:send()">Buscar</button>
-    </br>
+    <br />
     <div id='div'>
     </div>
 </body>
