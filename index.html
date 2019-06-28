@@ -8,9 +8,9 @@ function send()
       method: 'GET', 
       headers: { }
     });
-    alert("calling url v7");
+    alert("calling url v8");
     fetch(request) // Call the fetch function passing the url of the API as a parameter
-    .then(res => data.text())
+    .then(res => res.text())
     .then(function(data) {
     alert(data);
     document.getElementById("div").innerHTML = data;
