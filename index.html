@@ -40,7 +40,7 @@ function createTable(restaurantData) {
   row.appendChild(cell);
     
   var cell = document.createElement('td');
-  cell.appendChild(document.createTextNode(restaurantData.status));
+  cell.appendChild(document.createTextNode(restaurantData.url));
   row.appendChild(cell);
 
   tableBody.appendChild(row);
@@ -64,6 +64,7 @@ function addTableHeaders(table, headerNames){
 
 <html>
 <body id='bod'><button type="submit" onclick="javascript:send()">Buscar</button>
+    </br>
     <div id='div'>
     </div>
 </body>
