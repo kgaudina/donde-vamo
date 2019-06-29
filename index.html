@@ -17,7 +17,7 @@ var fieldsToHeader = {
     
 function send(){
      if(restaurantsData === null){
-         restaurantsData = requestData();
+         restaurantsData = await requestData();
      }
     
      var randomIndex = Math.floor(Math.random() * restaurantsData.length);
