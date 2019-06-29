@@ -6,6 +6,12 @@
 <script type="text/javascript" language="javascript">
 var tableInitialized = false;
 var table;
+var fieldsToHeader = {
+     'name': 'Nombre',
+     'url': 'URL',
+     'zone.id': 'Zona'
+};
+ 
     
 function send(){
     var corsProxy = 'https://cors-anywhere.herokuapp.com/';
@@ -25,11 +31,11 @@ function send(){
         var selectedRestaurantJSON = restaurantsJSON[randomIndex];
 
         if(tableInitialized === false){
-           table = initTable(['Nombre','URL']);
+           table = initTable(Array.from(fieldsToHeader.values()));
            tableInitialized = true;
         }
 
-        addRestaurantToTable(selectedRestaurantJSON);
+        addRestaurantToTable(Array.from(fieldsToHeader.keys()), selectedRestaurantJSON);
     })
     .catch(function(err) {
     alert(err);
@@ -49,27 +55,33 @@ function initTable(headerNames){
     return table;
 }
     
-function addRestaurantToTable(restaurantData) {
+function addRestaurantToTable(fieldNames, restaurantData) {
 
   var row = document.createElement('tr');
 
-  var cell = document.createElement('td');
-  cell.appendChild(document.createTextNode(restaurantData.name));
-  row.appendChild(cell);
-    
-  var link = document.createElement("a");
-  link.setAttribute("href", restaurantData.url);
-  var linkText = document.createTextNode(restaurantData.url);
-  link.appendChild(linkText);
-  var cell = document.createElement('td');
-  cell.appendChild(link);
-  row.appendChild(cell);
+  fieldNames.forEach(function(fieldName) {
+    var cell = document.createElement('td');
 
-  var tableBody = document.createElement('tbody');
+    if(fieldName == 'url'){
+       var url = restaurantData.fieldName;
+       var link = document.createElement("a");
+       link.setAttribute("href", url);
+       var linkText = document.createTextNode(url);
+       link.appendChild(linkText);
+       cell.appendChild(link);
+    } else {
+       cell.appendChild(document.createTextNode(restaurantData.fieldName));
+    }
+
+    row.appendChild(cell);
+  });
+  
+  var tableBody = document.createElement('tbody'); //??
   tableBody.appendChild(row);
   table.appendChild(tableBody);
   document.getElementById("div").appendChild(table);
-}    
+}
+
 </script>
 </head>
 
