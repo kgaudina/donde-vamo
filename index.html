@@ -60,6 +60,7 @@ function addRestaurantToTable(fieldNames, restaurantData) {
   var row = document.createElement('tr');
 
   fieldNames.forEach(function(fieldName) {
+    console.log(fieldName);
     var cell = document.createElement('td');
 
     if(fieldName == 'url'){
