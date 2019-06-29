@@ -30,7 +30,7 @@ function send(){
     addRestaurantToTable(Object.keys(fieldsToHeader), selectedRestaurantJSON);
 }
 
-function requestData(){
+async function requestData(){
     var corsProxy = 'https://cors-anywhere.herokuapp.com/';
     var url = 'https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5';
     var request = new Request(corsProxy + url, {
