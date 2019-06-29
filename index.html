@@ -70,10 +70,11 @@ function addRestaurantToTable(fieldNames, restaurantData) {
        link.appendChild(linkText);
        cell.appendChild(link);
     } else if(fieldName.includes('.')){ //??????????????
-       console.log(fieldName);
+       console.log(fieldName);        
+       var nestedFields = fieldName.split('.');
        var finalValue;
        var currentJSON;
-       fieldName.split('.').forEach(function(currentNestedField, index){
+       nestedFields.forEach(function(currentNestedField, index){
           currentJSON = restaurantData[currentNestedField];
           if(index == (nestedFields.length - 1)){
              finalValue = currentJSON;
