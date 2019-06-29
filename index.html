@@ -20,15 +20,17 @@ function send(){
          restaurantsData = requestData();
      }
     
-     var randomIndex = Math.floor(Math.random() * restaurantsData.length);
-     var selectedRestaurantJSON = restaurantsData[randomIndex];
+     if(restaurantsData.length >0){
+         var randomIndex = Math.floor(Math.random() * restaurantsData.length);
+         var selectedRestaurantJSON = restaurantsData[randomIndex];
 
-     if(table === null){
-        table = initTable(Object.keys(fieldsToHeader).map(k => fieldsToHeader[k]));
-    }
+         if(table === null){
+             table = initTable(Object.keys(fieldsToHeader).map(k => fieldsToHeader[k]));
+         }
     
-    addRestaurantToTable(Object.keys(fieldsToHeader), selectedRestaurantJSON);
-    restaurantsData.splice(randomIndex, 1); 
+          addRestaurantToTable(Object.keys(fieldsToHeader), selectedRestaurantJSON);
+          restaurantsData.splice(randomIndex, 1); 
+    }
 }
 
 function requestData(){
