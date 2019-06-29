@@ -39,7 +39,7 @@ function requestData(){
     });
     var response = async () => {await fetch(request);}
     var regex = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
-    var matcher = regex.exec(res.text());    
+    var matcher = regex.exec(response.text());    
     return JSON.parse(matcher[1]).search.restaurants;
 }
 
