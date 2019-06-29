@@ -40,6 +40,7 @@ function requestData(){
     var response = async () => { 
         var res = await fetch(request);
         response = await res.text();
+        console.log(response);
     }
     var regex = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
     var matcher = regex.exec(response);    
