@@ -33,17 +33,18 @@ function send(){
 function requestData(){
     var corsProxy = 'https://cors-anywhere.herokuapp.com/';
     var url = 'https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5';
-    var request = new Request(corsProxy + url, {
-      method: 'GET', 
-      headers: {}
-    });
-    var response = async () => { 
-        var res = await fetch(request);
-        response = await res.text();
-        console.log(response);
+  
+    var request = new XMLHttpRequest();
+    request.open('GET', corsProxy + url , false);  // `false` makes the request synchronous
+    request.send(null);
+    request.responseText
+
+    if (request.status === 200) {
+     console.log();
     }
+
     var regex = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
-    var matcher = regex.exec(response);    
+    var matcher = regex.exec(request.responseText);    
     return JSON.parse(matcher[1]).search.restaurants;
 }
 
