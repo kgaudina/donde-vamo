@@ -37,20 +37,12 @@ function requestData(){
       method: 'GET', 
       headers: {}
     });
-    var restaurantsJSON = null;
-    await fetch(request)
-    .then(res => res.text())  
-    .then(function(data) {
-        var regex = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
-        var matcher = regex.exec(data);
-        restaurantsJSON = JSON.parse(matcher[1]).search.restaurants;
-    })
-    .catch(function(err) {
-        alert(err);
-    });
-    
-    return restaurantsJSON;
+    var response = await fetch(request);
+    var regex = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
+    var matcher = regex.exec(res.text());    
+    return JSON.parse(matcher[1]).search.restaurants;
 }
+
 function initTable(headerNames){
     var table = document.createElement('table');
     var header = table.createTHead();
