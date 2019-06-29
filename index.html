@@ -60,18 +60,17 @@ function addRestaurantToTable(fieldNames, restaurantData) {
   var row = document.createElement('tr');
 
   fieldNames.forEach(function(fieldName) {
-    console.log(fieldName);
-    var cell = document.createElement('td');
+    var cell = document.createElement('td');      
+    var fieldValue = restaurantData[fieldName];
 
     if(fieldName == 'url'){
-       var url = restaurantData.fieldName;
        var link = document.createElement("a");
-       link.setAttribute("href", url);
-       var linkText = document.createTextNode(url);
+       link.setAttribute("href", fieldValue);
+       var linkText = document.createTextNode(fieldValue);
        link.appendChild(linkText);
        cell.appendChild(link);
     } else {
-       cell.appendChild(document.createTextNode(restaurantData.fieldName));
+       cell.appendChild(document.createTextNode(fieldValue));
     }
 
     row.appendChild(cell);
