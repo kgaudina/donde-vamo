@@ -11,7 +11,8 @@ var fieldsToHeader = {
      'name': 'Nombre',
      'url': 'URL',
      'pricing.expectedMealPrice': 'Precio',
-     'zone.name': 'Zona'
+     'zone.name': 'Zona',
+     'primaryCuisine.name': 'Cocina'
 };
  
     
@@ -40,11 +41,6 @@ function requestData(){
     var request = new XMLHttpRequest();
     request.open('GET', corsProxy + url , false);  // `false` makes the request synchronous
     request.send(null);
-    request.responseText
-
-    if (request.status === 200) {
-     console.log();
-    }
 
     var regex = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
     var matcher = regex.exec(request.responseText);    
