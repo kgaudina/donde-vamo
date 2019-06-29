@@ -24,7 +24,7 @@ function send(){
         var randomIndex = Math.floor(Math.random() * restaurantsJSON.length);
         var selectedRestaurantJSON = restaurantsJSON[randomIndex];
 
-        if(tableInitialized === 'false'){
+        if(tableInitialized === false){
            table = initTable(['Nombre','URL']);
            tableInitialized = true;
         }
