@@ -9,7 +9,7 @@ var table;
 var fieldsToHeader = {
      'name': 'Nombre',
      'url': 'URL',
-     'zone.id': 'Zona'
+     'zone.name': 'Zona'
 };
  
     
@@ -70,13 +70,11 @@ function addRestaurantToTable(fieldNames, restaurantData) {
        link.appendChild(linkText);
        cell.appendChild(link);
     } else if(fieldName.includes('.')){ //??????????????
-       console.log(fieldName);        
        var nestedFields = fieldName.split('.');
        var finalValue;
-       var currentJSON;
+       var currentJSON = restaurantData;
        nestedFields.forEach(function(currentNestedField, index){
-          currentJSON = restaurantData[currentNestedField];
-          console.log(currentJSON);  
+          currentJSON = currentJSON[currentNestedField];
           if(index == (nestedFields.length - 1)){
              finalValue = currentJSON;
           }          
