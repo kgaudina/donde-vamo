@@ -1,7 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/news/assets/built/screen.css?v=31a9013904" />
+    
 <script type="text/javascript" language="javascript">
-
-function send()
-{
+function send(){
     ///alert("calling url v9");
     var corsProxy = 'https://cors-anywhere.herokuapp.com/'
     var url = 'https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5';
@@ -24,7 +27,7 @@ function send()
     .catch(function(err) {
     alert(err);
     });
- }
+}
     
 function createTable(restaurantData) {
   var table = document.createElement('table');
@@ -51,7 +54,7 @@ function createTable(restaurantData) {
   table.appendChild(tableBody);
   document.getElementById("div").appendChild(table);
 }
-    
+
 function addTableHeaders(table, headerNames){
     var header = table.createTHead();
     var row = header.insertRow(0);  
@@ -64,12 +67,10 @@ function addTableHeaders(table, headerNames){
 }
     
 </script>
+</head>
 
-
-<html>
-<body id='bod'><button type="submit" onclick="javascript:send()">Buscar</button>
-    <br />
-    <div id='div'>
-    </div>
+<body>
+    <button id='btn' type="submit" onclick="javascript:send()">Buscar</button>
+    <div id='div'/>
 </body>
 </html>
