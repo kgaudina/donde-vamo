@@ -4,8 +4,9 @@
 <link rel="stylesheet" type="text/css" href="css/styles.css" />
     
 <script type="text/javascript" language="javascript">
-var tableInitialized = false;
-var table;
+var table = null;
+var restaurantsData = null;
+
 var fieldsToHeader = {
      'name': 'Nombre',
      'url': 'URL',
@@ -15,34 +16,41 @@ var fieldsToHeader = {
  
     
 function send(){
+     if(restaurantsData === null){
+         restaurantsData = requestData();
+     }
+    
+     var randomIndex = Math.floor(Math.random() * restaurantsData.length);
+     var selectedRestaurantJSON = restaurantsData[randomIndex];
+
+     if(table === null){
+        table = initTable(Object.keys(fieldsToHeader).map(k => fieldsToHeader[k]));
+    }
+    
+    addRestaurantToTable(Object.keys(fieldsToHeader), selectedRestaurantJSON);
+}
+
+function requestData(){
     var corsProxy = 'https://cors-anywhere.herokuapp.com/';
     var url = 'https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5';
     var request = new Request(corsProxy + url, {
       method: 'GET', 
       headers: {}
     });
+    var restaurantsJSON = null;
     fetch(request)
     .then(res => res.text())  
     .then(function(data) {
         var regex = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
         var matcher = regex.exec(data);
-        var restaurantsJSON = JSON.parse(matcher[1]).search.restaurants;
+        restaurantsJSON = JSON.parse(matcher[1]).search.restaurants;
 
-        var randomIndex = Math.floor(Math.random() * restaurantsJSON.length);
-        var selectedRestaurantJSON = restaurantsJSON[randomIndex];
-
-        if(tableInitialized === false){
-           table = initTable(Object.keys(fieldsToHeader).map(k => fieldsToHeader[k]));
-           tableInitialized = true;
-        }
-
-        addRestaurantToTable(Object.keys(fieldsToHeader), selectedRestaurantJSON);
+        return restaurantsJSON;
     })
     .catch(function(err) {
-    alert(err);
+        alert(err);
     });
 }
-    
 function initTable(headerNames){
     var table = document.createElement('table');
     var header = table.createTHead();
