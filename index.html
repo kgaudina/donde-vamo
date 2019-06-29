@@ -71,7 +71,7 @@ function addRestaurantToTable(fieldNames, restaurantData) {
     if(fieldName == 'url'){
        var link = document.createElement("a");
        link.setAttribute("href", fieldValue);
-       var linkText = document.createTextNode(fieldValue);
+       var linkText = document.createTextNode('Link');
        link.appendChild(linkText);
        cell.appendChild(link);
     } else if(fieldName.includes('.')){ //??????????????
