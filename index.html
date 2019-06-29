@@ -37,7 +37,7 @@ function requestData(){
       method: 'GET', 
       headers: {}
     });
-    var response = await fetch(request);
+    var response = async () => {await fetch(request);}
     var regex = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
     var matcher = regex.exec(res.text());    
     return JSON.parse(matcher[1]).search.restaurants;
