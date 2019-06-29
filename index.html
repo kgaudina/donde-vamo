@@ -69,6 +69,18 @@ function addRestaurantToTable(fieldNames, restaurantData) {
        var linkText = document.createTextNode(fieldValue);
        link.appendChild(linkText);
        cell.appendChild(link);
+    } if(fieldName.includes('.')){ //??????????????
+       var nestedFields = fieldName.split('.');
+       var finalValue;
+       var currentJSON;
+       nestedFields.forEach(function(currentNestedField, index){
+          currentJSON = restaurantData[currentNestedField];
+          if(index == (nestedFields.length() - 1)){
+             finalValue = currentJSON;
+          }          
+       });
+        
+       cell.appendChild(document.createTextNode(finalValue));
     } else {
        cell.appendChild(document.createTextNode(fieldValue));
     }
