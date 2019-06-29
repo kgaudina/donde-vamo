@@ -57,6 +57,8 @@ function initTable(headerNames){
         cell.innerHTML = '<b>' + headerName + '</b>';   
         y++;
     });
+    var tableBody = document.createElement('tbody'); //??
+    table.appendChild(tableBody);
     return table;
 }
     
@@ -92,10 +94,7 @@ function addRestaurantToTable(fieldNames, restaurantData) {
 
     row.appendChild(cell);
   });
-  
-  var tableBody = document.createElement('tbody'); //??
-  tableBody.appendChild(row);
-  table.appendChild(tableBody);
+  table.tBodies[0].appendChild(row);
   document.getElementById("div").appendChild(table);
 }
 
