@@ -27,6 +27,7 @@ function send(){
 
          if(table === null){
              table = initTable(Object.keys(fieldsToHeader).map(k => fieldsToHeader[k]));
+             document.getElementById("div").appendChild(table);
          }
     
           addRestaurantToTable(Object.keys(fieldsToHeader), selectedRestaurantJSON);
