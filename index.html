@@ -76,6 +76,7 @@ function addRestaurantToTable(fieldNames, restaurantData) {
        var currentJSON;
        nestedFields.forEach(function(currentNestedField, index){
           currentJSON = restaurantData[currentNestedField];
+          console.log(currentJSON);  
           if(index == (nestedFields.length - 1)){
              finalValue = currentJSON;
           }          
