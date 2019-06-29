@@ -31,7 +31,7 @@ function send(){
         var selectedRestaurantJSON = restaurantsJSON[randomIndex];
 
         if(tableInitialized === false){
-           table = initTable(Object.keys(fieldsToHeader).map(k => a[k]));
+           table = initTable(Object.keys(fieldsToHeader).map(k => fieldsToHeader[k]));
            tableInitialized = true;
         }
 
