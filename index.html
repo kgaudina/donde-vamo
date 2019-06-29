@@ -35,7 +35,7 @@ function send(){
            tableInitialized = true;
         }
 
-        addRestaurantToTable(Array.from(Object.keys(fieldsToHeader)), selectedRestaurantJSON);
+        addRestaurantToTable(Object.keys(fieldsToHeader), selectedRestaurantJSON);
     })
     .catch(function(err) {
     alert(err);
