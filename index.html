@@ -13,7 +13,7 @@ function send(){
     });
     fetch(request)
     .then(res => res.text())  
-    .then(data =>
+    .then(function(data) {
         var regex = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
         var matcher = regex.exec(data);
         var restaurantsJSON = JSON.parse(matcher[1]).search.restaurants;
@@ -21,7 +21,7 @@ function send(){
         var randomIndex = Math.floor(Math.random() * restaurantsJSON.length);
         var selectedRestaurantJSON = restaurantsJSON[randomIndex];
         createTable(selectedRestaurantJSON);
-    )
+    })
     .catch(function(err) {
     alert(err);
     });
@@ -29,9 +29,6 @@ function send(){
     
 function createTable(restaurantData) {
   var table = document.createElement('table');
-  table.setAttribute('class','table_c');
-  table.setAttribute('border','1');
-  table.setAttribute('width','100%')
   addTableHeaders(table, ['Nombre','URL']);
   var tableBody = document.createElement('tbody');
 
