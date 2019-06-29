@@ -37,9 +37,12 @@ function requestData(){
       method: 'GET', 
       headers: {}
     });
-    var response = async () => {await fetch(request);}
+    var response = async () => { 
+        var res = await fetch(request);
+        response = await res.text();
+    }
     var regex = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
-    var matcher = regex.exec(response.text());    
+    var matcher = regex.exec(response);    
     return JSON.parse(matcher[1]).search.restaurants;
 }
 
