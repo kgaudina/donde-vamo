@@ -32,7 +32,7 @@ table td, table th {
   padding: 3px 0px;
 }
 table tbody td {
-  font-size: 13px;
+  font-size: 25px;
 }
 table tr:nth-child(even) {
   background: #A5C5AA;
@@ -51,7 +51,7 @@ table thead th {
   text-align: center;
 }
 table tfoot td {
-  font-size: 13px;
+  font-size: 25px;
 }
 table tfoot .links {
   text-align: right;
