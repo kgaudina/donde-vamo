@@ -69,7 +69,7 @@ function addRestaurantToTable(fieldNames, restaurantData) {
        var linkText = document.createTextNode(fieldValue);
        link.appendChild(linkText);
        cell.appendChild(link);
-    } if(fieldName.includes('.')){ //??????????????
+    } else if(fieldName.includes('.')){ //??????????????
        var nestedFields = fieldName.split('.');
        var finalValue;
        var currentJSON;
