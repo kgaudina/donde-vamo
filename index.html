@@ -4,6 +4,9 @@
 <link rel="stylesheet" type="text/css" href="css/styles.css" />
     
 <script type="text/javascript" language="javascript">
+var tableInitialized = false;
+var table;
+    
 function send(){
     var corsProxy = 'https://cors-anywhere.herokuapp.com/';
     var url = 'https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5';
@@ -20,17 +23,33 @@ function send(){
 
         var randomIndex = Math.floor(Math.random() * restaurantsJSON.length);
         var selectedRestaurantJSON = restaurantsJSON[randomIndex];
-        createTable(selectedRestaurantJSON);
+
+        if(tableInitialized === 'false'){
+           table = initTable(['Nombre','URL']);
+           tableInitialized = true;
+        }
+
+        addRestaurantToTable(selectedRestaurantJSON);
     })
     .catch(function(err) {
     alert(err);
     });
 }
     
-function createTable(restaurantData) {
-  var table = document.createElement('table');
-  addTableHeaders(table, ['Nombre','URL']);
-  var tableBody = document.createElement('tbody');
+function initTable(headerNames){
+    var table = document.createElement('table');
+    var header = table.createTHead();
+    var row = header.insertRow(0);  
+    var y = 0;
+    headerNames.forEach(function(headerName) {
+        var cell = row.insertCell(y);
+        cell.innerHTML = '<b>' + headerName + '</b>';   
+        y++;
+    });
+    return table;
+}
+    
+function addRestaurantToTable(restaurantData) {
 
   var row = document.createElement('tr');
 
@@ -46,22 +65,11 @@ function createTable(restaurantData) {
   cell.appendChild(link);
   row.appendChild(cell);
 
+  var tableBody = document.createElement('tbody');
   tableBody.appendChild(row);
   table.appendChild(tableBody);
   document.getElementById("div").appendChild(table);
-}
-
-function addTableHeaders(table, headerNames){
-    var header = table.createTHead();
-    var row = header.insertRow(0);  
-    var y = 0;
-    headerNames.forEach(function(headerName) {
-        var cell = row.insertCell(y);
-        cell.innerHTML = '<b>' + headerName + '</b>';   
-        y++;
-    });
-}
-    
+}    
 </script>
 </head>
 
