@@ -28,6 +28,7 @@ function send(){
     }
     
     addRestaurantToTable(Object.keys(fieldsToHeader), selectedRestaurantJSON);
+    restaurantsData.splice(randomIndex, 1); 
 }
 
 function requestData(){
