@@ -5,25 +5,23 @@
     
 <script type="text/javascript" language="javascript">
 function send(){
-    ///alert("calling url v9");
-    var corsProxy = 'https://cors-anywhere.herokuapp.com/'
+    var corsProxy = 'https://cors-anywhere.herokuapp.com/';
     var url = 'https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5';
     var request = new Request(corsProxy + url, {
       method: 'GET', 
-      headers: { }
+      headers: {}
     });
     fetch(request)
     .then(res => res.text())  
-    .then(function(data) {
-        var myRegexp = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
-        var matcher = myRegexp.exec(data);
+    .then(data =>
+        var regex = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
+        var matcher = regex.exec(data);
         var restaurantsJSON = JSON.parse(matcher[1]).search.restaurants;
-                
+
         var randomIndex = Math.floor(Math.random() * restaurantsJSON.length);
         var selectedRestaurantJSON = restaurantsJSON[randomIndex];
         createTable(selectedRestaurantJSON);
-      ///  document.getElementById("div").innerHTML = selectedRestaurantJSON.name;
-    })
+    )
     .catch(function(err) {
     alert(err);
     });
@@ -31,13 +29,14 @@ function send(){
     
 function createTable(restaurantData) {
   var table = document.createElement('table');
+  table.setAttribute('class','table_c');
   table.setAttribute('border','1');
   table.setAttribute('width','100%')
   addTableHeaders(table, ['Nombre','URL']);
   var tableBody = document.createElement('tbody');
 
   var row = document.createElement('tr');
-  ///x2
+
   var cell = document.createElement('td');
   cell.appendChild(document.createTextNode(restaurantData.name));
   row.appendChild(cell);
