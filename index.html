@@ -17,7 +17,7 @@ var fieldsToHeader = {
     
 function send(){
      if(restaurantsData === null){
-         restaurantsData = await requestData();
+         restaurantsData = requestData();
      }
     
      var randomIndex = Math.floor(Math.random() * restaurantsData.length);
@@ -30,7 +30,7 @@ function send(){
     addRestaurantToTable(Object.keys(fieldsToHeader), selectedRestaurantJSON);
 }
 
-async function requestData(){
+function requestData(){
     var corsProxy = 'https://cors-anywhere.herokuapp.com/';
     var url = 'https://buenos-aires.restorando.com.ar/restaurantes-en-martinez,palermo,san-isidro,vicente-lopez,zona-norte/con-precio-4,5';
     var request = new Request(corsProxy + url, {
@@ -38,18 +38,18 @@ async function requestData(){
       headers: {}
     });
     var restaurantsJSON = null;
-    fetch(request)
+    await fetch(request)
     .then(res => res.text())  
     .then(function(data) {
         var regex = new RegExp('window\.__INITIAL_STATE__ = (.*?);($|\n)');
         var matcher = regex.exec(data);
         restaurantsJSON = JSON.parse(matcher[1]).search.restaurants;
-
-        return restaurantsJSON;
     })
     .catch(function(err) {
         alert(err);
     });
+    
+    return restaurantsJSON;
 }
 function initTable(headerNames){
     var table = document.createElement('table');
